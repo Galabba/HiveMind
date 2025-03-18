@@ -16,9 +16,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.HelloController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.HelloController">
    <children>
-      <Pane fx:id="login" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a9f1f5;" visible="true" StackPane.alignment="CENTER">
+      <Pane fx:id="login" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" visible="true" StackPane.alignment="CENTER">
          <children>
             <Text fx:id="Title" layoutX="507.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HiveMind" textAlignment="CENTER">
                <font>
@@ -46,14 +46,14 @@
             <TextField fx:id="Pass" layoutX="540.0" layoutY="367.0" prefHeight="25.0" prefWidth="200.0" style="-fx-border-color: black;" />
          </children>
       </Pane>
-      <Pane fx:id="home" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #a9f1f5;" visible="false">
+      <Pane fx:id="home" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" visible="false">
          <children>
             <Text layoutX="572.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" textAlignment="CENTER" wrappingWidth="114.82879638671875">
                <font>
                   <Font size="36.0" />
                </font>
             </Text>
-            <GridPane gridLinesVisible="true" layoutX="276.0" layoutY="187.0" prefHeight="513.0" prefWidth="725.0">
+            <GridPane style="@../../../css/gridpane.css" gridLinesVisible="true" layoutX="276.0" layoutY="187.0" prefHeight="513.0" prefWidth="725.0" stylesheets="@../../../css/hive_mind.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -141,7 +141,7 @@
             <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
               <items>
                 <MenuItem mnemonicParsing="false" text="Account" />
-                <MenuItem mnemonicParsing="false" text="Log Out" onAction="#onLogOut" />
+                <MenuItem mnemonicParsing="false" onAction="#onLogOut" text="Log Out" />
               </items>
             </MenuButton>
          </children>

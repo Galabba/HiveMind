@@ -53,7 +53,7 @@
                   <Font size="36.0" />
                </font>
             </Text>
-            <GridPane gridLinesVisible="true" layoutX="276.0" layoutY="187.0" prefHeight="513.0" prefWidth="725.0">
+            <GridPane style="@../../../css/gridpane.css" gridLinesVisible="true" layoutX="276.0" layoutY="187.0" prefHeight="513.0" prefWidth="725.0" stylesheets="@../../../css/hive_mind.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
