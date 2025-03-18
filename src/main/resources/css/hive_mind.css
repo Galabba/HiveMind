@@ -1,0 +1,170 @@
+/* Colori di base */
+.root {
+    -fx-base: #FFD700; /* Giallo dorato */
+    -fx-background: #F4A460; /* Marrone chiaro */
+    -fx-control-inner-background: #FFA500; /* Arancione */
+    -fx-accent: #8B4513; /* Marrone scuro */
+    -fx-default-button: #FF8C00; /* Arancione scuro */
+    -fx-focus-color: #FF4500; /* Rosso-arancio */
+    -fx-text-background-color: #000000; /* Testo nero per contrasto */
+}
+
+/* Stile per i pulsanti */
+.button {
+    -fx-background-color: -fx-default-button;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 5, 0, 0, 1);
+}
+
+.button:hover {
+    -fx-background-color: #FF4500; /* Rosso-arancio */
+}
+
+.button:pressed {
+    -fx-background-color: #8B4513; /* Marrone scuro */
+}
+
+/* Stile per le tabelle */
+.table-view {
+    -fx-background-color: -fx-control-inner-background;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-control-inner-background;
+    -fx-text-fill: black;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: derive(-fx-control-inner-background, -10%);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+}
+
+/* Stile per i menu a tendina */
+.menu-bar {
+    -fx-background-color: -fx-base;
+}
+
+.menu-bar .menu {
+    -fx-text-fill: white;
+}
+
+.menu-bar .menu-item {
+    -fx-background-color: -fx-base;
+    -fx-text-fill: black;
+}
+
+.menu-bar .menu-item:hover {
+    -fx-background-color: -fx-accent;
+    -fx-text-fill: white;
+}
+
+/* Stile per gli sfondi */
+.background {
+    -fx-background-color: linear-gradient(to bottom, #FFD700, #F4A460);
+}
+
+/* Stile per le etichette */
+.label {
+    -fx-text-fill: black;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+/* Stile per i campi di testo */
+.text-field {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.text-field:focused {
+    -fx-border-color: -fx-focus-color;
+}
+
+/* Stile per le aree di testo */
+.text-area {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+
+.text-area .content {
+    -fx-background-color: white;
+}
+
+/* Stile per i checkbox */
+.check-box {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: -fx-accent;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: -fx-accent;
+}
+
+/* Stile per i radio button */
+.radio-button {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.radio-button .radio {
+    -fx-background-color: white;
+    -fx-border-color: -fx-accent;
+}
+
+.radio-button:selected .dot {
+    -fx-background-color: -fx-accent;
+}
+
+/* Stile per le barre di scorrimento */
+.scroll-bar:horizontal, .scroll-bar:vertical {
+    -fx-background-color: -fx-base;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: -fx-accent;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: derive(-fx-accent, -10%);
+}
+
+/* Stile per i pannelli */
+.pane {
+    -fx-background-color: -fx-background;
+}
+
+/* Stile per i separatori */
+.separator {
+    -fx-background-color: -fx-accent;
+}
+
+/* Stile per i tooltip */
+.tooltip {
+    -fx-background-color: -fx-base;
+    -fx-text-fill: black;
+    -fx-font-size: 12px;
+}
