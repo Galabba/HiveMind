@@ -37,7 +37,7 @@
             </Text>
             <Label fx:id="User_lable" layoutX="158.0" layoutY="96.0" />
             <Label fx:id="Pass_lable" layoutX="206.0" layoutY="208.0" />
-            <Button fx:id="Sign_In" layoutX="590.0" layoutY="511.0" mnemonicParsing="false" onAction="#onSignIn" prefHeight="25.0" prefWidth="100.0" style="-fx-border-color: black;" text="Login" textAlignment="CENTER">
+            <Button fx:id="Sign_In" layoutX="590.0" layoutY="511.0" mnemonicParsing="false" onAction="#onLogIn" prefHeight="25.0" prefWidth="100.0" style="-fx-border-color: black;" text="Login" textAlignment="CENTER">
                <font>
                   <Font size="18.0" />
                </font>

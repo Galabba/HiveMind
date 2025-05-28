@@ -17,29 +17,8 @@ public class HelloApplication extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
-
     public static void main(String[] args) {
-        Connection connection = null;
-        try {
-            // below two lines are used for connectivity.
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/hive_mind",
-                    "root", "rocchio");
-
-            // mydb is database
-            // mydbuser is name of database
-            // mydbuser is password of database
-
-            Statement statement;
-            statement = connection.createStatement();
-            ResultSet resultSet;
-            resultSet = statement.executeQuery("select * from dipendenti");
-        }
-        catch (Exception exception) {
-            System.out.println(exception);
-        }
+        HelloController.DB_Connection();    //metodo della classe HelloController per la connessione al DB-MySQL
         launch();
     }
 }
