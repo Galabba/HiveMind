@@ -1,16 +1,15 @@
 package com.example.blacklionclient;
 
 public class User {
-    private String username, passw, name, surname, depart, city;
-    private Boolean login =false;
+    private String username, passw, name, surname, depart;
+    private Boolean login = false;
 
-    public User(String username, String passw, String name, String surname, String depart, String city) {
+    public User(String username, String passw, String name, String surname, String depart) {
         this.username = username;
         this.passw = passw;
         this.name = name;
         this.surname = surname;
         this.depart = depart;
-        this.city = city;
     }
     public String getUsername() {
         return username;
@@ -42,12 +41,6 @@ public class User {
     public void setDepart(String depart) {
         this.depart = depart;
     }
-    public String getCity() {
-        return city;
-    }
-    public void setCity(String city) {
-        this.city = city;
-    }
     public Boolean getLogin() {
         return login;
     }
@@ -62,7 +55,6 @@ public class User {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", depart='" + depart + '\'' +
-                ", city='" + city + '\'' +
                 '}';
     }
 }

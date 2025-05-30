@@ -61,7 +61,7 @@
 
 .menu-bar .menu-item {
     -fx-background-color: -fx-base;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
 }
 
 .menu-bar .menu-item:hover {
@@ -84,7 +84,7 @@
 /* Stile per i campi di testo */
 .text-field {
     -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-border-color: -fx-accent;
     -fx-border-radius: 5px;
@@ -97,8 +97,8 @@
 
 /* Stile per le aree di testo */
 .text-area {
-    -fx-background-color: white;
-    -fx-text-fill: black;
+    -fx-background-color: #FF8C00;
+    -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-border-color: -fx-accent;
     -fx-border-radius: 5px;
@@ -106,7 +106,8 @@
 }
 
 .text-area .content {
-    -fx-background-color: white;
+    -fx-text-fill: white;
+    -fx-background-color:  #FF8C00;
 }
 
 /* Stile per i checkbox */

@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,9 +17,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.HelloController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.HelloController">
    <children>
-      <Pane fx:id="login" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" visible="true" StackPane.alignment="CENTER">
+      <Pane fx:id="login" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" visible="false" StackPane.alignment="CENTER">
          <children>
             <Text fx:id="Title" layoutX="507.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="HiveMind" textAlignment="CENTER">
                <font>
@@ -46,14 +47,14 @@
             <TextField fx:id="Pass" layoutX="540.0" layoutY="367.0" prefHeight="25.0" prefWidth="200.0" style="-fx-border-color: black;" />
          </children>
       </Pane>
-      <Pane fx:id="home" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" visible="false">
+      <Pane fx:id="home" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css">
          <children>
             <Text layoutX="572.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Home" textAlignment="CENTER" wrappingWidth="114.82879638671875">
                <font>
                   <Font size="36.0" />
                </font>
             </Text>
-            <GridPane style="@../../../css/gridpane.css" gridLinesVisible="true" layoutX="276.0" layoutY="187.0" prefHeight="513.0" prefWidth="725.0" stylesheets="@../../../css/hive_mind.css">
+            <GridPane fx:id="tabella" gridLinesVisible="true" layoutX="276.0" layoutY="187.0" prefHeight="513.0" prefWidth="725.0" style="@../../../css/gridpane.css" stylesheets="@../../../css/hive_mind.css">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -133,9 +134,14 @@
                         <Font size="27.0" />
                      </font>
                   </Button>
+                  <TextArea fx:id="desc1" editable="false" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextArea fx:id="desc2" editable="false" layoutX="252.0" layoutY="96.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                  <TextArea fx:id="desc3" editable="false" layoutX="252.0" layoutY="182.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                  <TextArea fx:id="desc4" editable="false" layoutX="252.0" layoutY="268.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <TextArea fx:id="desc5" editable="false" layoutX="252.0" layoutY="353.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Button fx:id="next" layoutX="702.0" layoutY="711.0" mnemonicParsing="false" text="--&gt;" />
+            <Button fx:id="next" layoutX="662.0" layoutY="711.0" mnemonicParsing="false" text="--&gt;" />
             <Button fx:id="prev" layoutX="550.0" layoutY="711.0" mnemonicParsing="false" text="&lt;--" />
             <Text fx:id="Pagina" layoutX="626.0" layoutY="729.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1/1)" />
             <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
