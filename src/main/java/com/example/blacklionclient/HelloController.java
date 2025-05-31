@@ -1,23 +1,22 @@
 package com.example.blacklionclient;
 
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import java.sql.*;
 
 public class HelloController {
     @FXML
     private Pane home, login;
-    private ImageView status1, status2, status3, status4, status5;
     @FXML
-    private TextArea desc1, desc2, desc3, desc4, desc5;
+    private GridPane table;
     @FXML
     private TextField User, Pass;
-    @FXML
-    private Button log_out, tick1, tick2, tick3, tick4, tick5;
     public Dipendente curr_user;
     public Manager curr_admin;
     private static Statement statement;     //Classe per l'invio delle query
@@ -78,7 +77,7 @@ public class HelloController {
         resultSet=statement.getResultSet();
         int ntick=0;
         while(resultSet.next() && ntick<5){
-            ntick++;
+          //  table.getco
         }
 
     }
