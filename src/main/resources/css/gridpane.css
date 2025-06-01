@@ -26,7 +26,8 @@
 }
 
 .grid-pane .cell .button {
-    -fx-background-color: -fx-default-button;
+    -fx-background-color: black;
+    -fx-default-button;
     -fx-text-fill: white;
     -fx-font-size: 14px;
     -fx-font-weight: bold;

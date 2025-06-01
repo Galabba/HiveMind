@@ -1,14 +1,19 @@
 package com.example.blacklionclient;
 
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 public class HelloController {
     @FXML
@@ -17,6 +22,7 @@ public class HelloController {
     private GridPane table;
     @FXML
     private TextField User, Pass;
+    public ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
     public Dipendente curr_user;
     public Manager curr_admin;
     private static Statement statement;     //Classe per l'invio delle query
@@ -59,7 +65,7 @@ public class HelloController {
        }
        if (home.isVisible()){
            try {
-               fillTicketPane();
+               loadTicketPane();
            } catch (SQLException e) {
                throw new RuntimeException(e);
            }
@@ -75,27 +81,28 @@ public class HelloController {
         login.setVisible(true);
     }
 
-    private void fillTicketPane() throws SQLException {
+    private void loadTicketPane() throws SQLException {
         statement = connection.createStatement();
         statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+curr_user.getDepart()+"\"");
         resultSet=statement.getResultSet();
+        while(resultSet.next()){
+            ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),
+                    resultSet.getString("Status"), resultSet.getString("Dipartimento"), resultSet.getInt("idTicket")));
+        }
+        int i=0;
         for (Node node : table.getChildren()) {
             if (node instanceof Button){
-                if(resultSet.next()){
-                    ((TextArea) node).setText(resultSet.getString("Nome"));
+                if(ticketList.get(i)!=null){
+                    ((Button) node).setText(ticketList.get(i).getNome());
+                    ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setText(ticketList.get(i).getDescr());
+                    ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setImage(new Image(getClass().getResourceAsStream("/img/"+ticketList.get(i).getStatus()+".png")));
+                i++;
                 }
                 else{
                     break;
                 }
             }
-            else if (node instanceof TextArea){
-                ((TextArea) node).setText(resultSet.getString("Descrizione"));
-            }
-            else if (node instanceof ImageView){
-            //    ((ImageView) node).setImage();
-            }
         }
-
     }
 
     //metodo per la connessione al DB
@@ -122,6 +129,19 @@ public class HelloController {
             System.out.println(e);
         }
     }
+    public Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
+        ObservableList<Node> children = gridPane.getChildren();
+        for (Node node : children) {
+            Integer rowIndex = GridPane.getRowIndex(node);
+            Integer colIndex = GridPane.getColumnIndex(node);
 
+            int currentRow = (rowIndex != null) ? rowIndex : 0;
+            int currentCol = (colIndex != null) ? colIndex : 0;
 
+            if (currentRow == row && currentCol == column) {
+                return node;
+            }
+        }
+        return null;
+    }
 }

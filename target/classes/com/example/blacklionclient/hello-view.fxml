@@ -83,7 +83,7 @@
                      </font></Text>
                   <ImageView fx:id="status1" fitHeight="75.0" fitWidth="78.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                      <image>
-                        <Image url="@../../../img/done.png" />
+                        <Image url="@../../../img/start.png" />
                      </image>
                      <GridPane.margin>
                         <Insets />
@@ -91,7 +91,7 @@
                   </ImageView>
                   <ImageView fx:id="status2" fitHeight="75.0" fitWidth="78.0" layoutX="580.0" layoutY="102.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <image>
-                        <Image url="@../../../img/done.png" />
+                        <Image url="@../../../img/start.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="status3" fitHeight="75.0" fitWidth="78.0" layoutX="580.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="3">
@@ -101,12 +101,12 @@
                   </ImageView>
                   <ImageView fx:id="status4" fitHeight="75.0" fitWidth="78.0" layoutX="494.0" layoutY="273.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <image>
-                        <Image url="@../../../img/start.png" />
+                        <Image url="@../../../img/stop.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="status5" fitHeight="75.0" fitWidth="78.0" layoutX="494.0" layoutY="358.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <image>
-                        <Image url="@../../../img/start.png" />
+                        <Image url="@../../../img/stop.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="tick1" mnemonicParsing="false" prefHeight="70.0" prefWidth="124.0" text="Test" GridPane.halignment="CENTER" GridPane.rowIndex="1">
@@ -141,9 +141,9 @@
                   <TextArea fx:id="desc5" editable="false" layoutX="252.0" layoutY="353.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Button fx:id="next" layoutX="662.0" layoutY="711.0" mnemonicParsing="false" text="--&gt;" />
-            <Button fx:id="prev" layoutX="550.0" layoutY="711.0" mnemonicParsing="false" text="&lt;--" />
-            <Text fx:id="Pagina" layoutX="626.0" layoutY="729.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1/1)" />
+            <Button fx:id="next" layoutX="687.0" layoutY="713.0" mnemonicParsing="false" text="--&gt;" />
+            <Button fx:id="prev" layoutX="535.0" layoutY="713.0" mnemonicParsing="false" text="&lt;--" />
+            <Text fx:id="npag" layoutX="626.0" layoutY="729.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1/1)" />
             <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
               <items>
                 <MenuItem mnemonicParsing="false" text="Account" />
