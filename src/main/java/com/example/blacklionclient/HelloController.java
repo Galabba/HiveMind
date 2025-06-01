@@ -58,7 +58,11 @@ public class HelloController {
            throw new RuntimeException(e);
        }
        if (home.isVisible()){
-
+           try {
+               fillTicketPane();
+           } catch (SQLException e) {
+               throw new RuntimeException(e);
+           }
        }
 
 
@@ -73,11 +77,23 @@ public class HelloController {
 
     private void fillTicketPane() throws SQLException {
         statement = connection.createStatement();
-        statement.executeQuery("select * from ticket");
+        statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+curr_user.getDepart()+"\"");
         resultSet=statement.getResultSet();
-        int ntick=0;
-        while(resultSet.next() && ntick<5){
-          //  table.getco
+        for (Node node : table.getChildren()) {
+            if (node instanceof Button){
+                if(resultSet.next()){
+                    ((TextArea) node).setText(resultSet.getString("Nome"));
+                }
+                else{
+                    break;
+                }
+            }
+            else if (node instanceof TextArea){
+                ((TextArea) node).setText(resultSet.getString("Descrizione"));
+            }
+            else if (node instanceof ImageView){
+            //    ((ImageView) node).setImage();
+            }
         }
 
     }

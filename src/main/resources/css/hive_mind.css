@@ -84,7 +84,7 @@
 /* Stile per i campi di testo */
 .text-field {
     -fx-background-color: white;
-    -fx-text-fill: white;
+    -fx-text-fill: black;
     -fx-font-size: 14px;
     -fx-border-color: -fx-accent;
     -fx-border-radius: 5px;
