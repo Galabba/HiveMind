@@ -1,0 +1,103 @@
+/* Stile per la GridPane */
+.grid-pane {
+    -fx-background-color: #FFD700; /* Giallo dorato */
+    -fx-border-color: #8B4513; /* Marrone scuro */
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-hgap: 10px; /* Spazio orizzontale tra le celle */
+    -fx-vgap: 10px; /* Spazio verticale tra le celle */
+}
+
+/* Stile per le celle della GridPane */
+.grid-pane .cell {
+    -fx-background-color: #FFA500; /* Arancione */
+    -fx-border-color: #8B4513; /* Marrone scuro */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+}
+
+/* Stile per i componenti all'interno delle celle */
+.grid-pane .cell .label {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.grid-pane .cell .button {
+    -fx-background-color: black;
+    -fx-default-button;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.grid-pane .cell .button:hover {
+    -fx-background-color: #FF4500; /* Rosso-arancio */
+}
+
+.grid-pane .cell .button:pressed {
+    -fx-background-color: #8B4513; /* Marrone scuro */
+}
+
+/* Stile per i campi di testo all'interno delle celle */
+.grid-pane .cell .text-field {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.grid-pane .cell .text-field:focused {
+    -fx-border-color: -fx-focus-color;
+}
+
+/* Stile per le aree di testo all'interno delle celle */
+.grid-pane .cell .text-area {
+    -fx-background-color: white;
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+    -fx-border-color: -fx-accent;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.grid-pane .cell .text-area .content {
+    -fx-background-color: white;
+}
+
+/* Stile per i checkbox all'interno delle celle */
+.grid-pane .cell .check-box {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.grid-pane .cell .check-box .box {
+    -fx-background-color: white;
+    -fx-border-color: -fx-accent;
+}
+
+.grid-pane .cell .check-box:selected .mark {
+    -fx-background-color: -fx-accent;
+}
+
+/* Stile per i radio button all'interno delle celle */
+.grid-pane .cell .radio-button {
+    -fx-text-fill: black;
+    -fx-font-size: 14px;
+}
+
+.grid-pane .cell .radio-button .radio {
+    -fx-background-color: white;
+    -fx-border-color: -fx-accent;
+}
+
+.grid-pane .cell .radio-button:selected .dot {
+    -fx-background-color: -fx-accent;
+}
