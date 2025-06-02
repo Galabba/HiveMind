@@ -22,12 +22,16 @@ public class HelloController {
     private GridPane table;
     @FXML
     private TextField User, Pass;
+    @FXML
+    private Text npag;
+
     public ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
     public Dipendente curr_user;
     public Manager curr_admin;
     private static Statement statement;     //Classe per l'invio delle query
     private static ResultSet resultSet;     //Classe per l'output delle query
     private static Connection connection;
+    private int curr_pag=1, page_max;
 
     //Controllo Credenziali e Login
     @FXML
@@ -73,12 +77,24 @@ public class HelloController {
 
 
     }
-
     //cambio scena Home-->Login
     @FXML
     protected void onLogOut(){
         home.setVisible(false);
         login.setVisible(true);
+    }
+    @FXML
+    protected void onNextPage(){
+        if(curr_pag < page_max){
+            loadPageTicketPane(curr_pag+1);
+        }else{}
+    }
+    @FXML
+    protected void onPrevPage(){
+        if(curr_pag > 1){
+            System.out.println(curr_pag);
+            loadPageTicketPane(curr_pag-1);
+        }else{}
     }
 
     private void loadTicketPane() throws SQLException {
@@ -89,21 +105,40 @@ public class HelloController {
             ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),
                     resultSet.getString("Status"), resultSet.getString("Dipartimento"), resultSet.getInt("idTicket")));
         }
-        int i=0;
+        page_max =(int) Math.ceil((double)ticketList.size()/5);
+        loadPageTicketPane(1);
+    }
+    private void loadPageTicketPane(int n_page){
+        curr_pag=n_page;
+        int i=(5*(n_page-1));
         for (Node node : table.getChildren()) {
             if (node instanceof Button){
-                if(ticketList.get(i)!=null){
+                    ((Button) node).setVisible(false);
+                    ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(false);
+                    ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(false);
+            }
+        }
+        for (Node node : table.getChildren()) {
+            if (node instanceof Button){
+                if(i<ticketList.size() && ticketList.get(i)!=null){
+                    ((Button) node).setVisible(true);
                     ((Button) node).setText(ticketList.get(i).getNome());
+                    ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(true);
                     ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setText(ticketList.get(i).getDescr());
+                    ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(true);
                     ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setImage(new Image(getClass().getResourceAsStream("/img/"+ticketList.get(i).getStatus()+".png")));
-                i++;
+                    i++;
                 }
                 else{
                     break;
                 }
             }
         }
+        if (ticketList.size()>5){
+            npag.setText(curr_pag+"/"+ page_max);
+        }
     }
+
 
     //metodo per la connessione al DB
     public static void DB_Connection(){

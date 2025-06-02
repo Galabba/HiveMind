@@ -141,8 +141,8 @@
                   <TextArea fx:id="desc5" editable="false" layoutX="252.0" layoutY="353.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Button fx:id="next" layoutX="687.0" layoutY="713.0" mnemonicParsing="false" text="--&gt;" />
-            <Button fx:id="prev" layoutX="535.0" layoutY="713.0" mnemonicParsing="false" text="&lt;--" />
+            <Button onAction="#onNextPage" layoutX="687.0" layoutY="713.0" mnemonicParsing="false" text="--&gt;" />
+            <Button onAction="#onPrevPage" layoutX="535.0" layoutY="713.0" mnemonicParsing="false" text="&lt;--" />
             <Text fx:id="npag" layoutX="626.0" layoutY="729.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1/1)" />
             <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
               <items>
