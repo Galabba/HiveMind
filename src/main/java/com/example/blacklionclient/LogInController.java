@@ -1,8 +1,12 @@
 package com.example.blacklionclient;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -11,11 +15,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class HelloController {
+public class LogInController {
     @FXML
     private Pane home, login;
     @FXML
@@ -32,6 +38,7 @@ public class HelloController {
     private static ResultSet resultSet;     //Classe per l'output delle query
     private static Connection connection;
     private int curr_pag=1, page_max;
+    private TicketPageController tickPageController=new TicketPageController();
 
     //Controllo Credenziali e Login
     @FXML
@@ -92,7 +99,6 @@ public class HelloController {
     @FXML
     protected void onPrevPage(){
         if(curr_pag > 1){
-            System.out.println(curr_pag);
             loadPageTicketPane(curr_pag-1);
         }else{}
     }
@@ -139,6 +145,21 @@ public class HelloController {
         }
     }
 
+    @FXML
+    public void onTicketSelected(ActionEvent actionEvent){
+        Button buttSelected = (Button) actionEvent.getSource();
+        try {
+            tickPageController=(TicketPageController) changeScene("TicketPage.fxml", actionEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (int i=0; i<5; i++){
+            if (Integer.parseInt(buttSelected.getId())==i){
+                tickPageController.tickSelected=ticketList.get(i+(5*(curr_pag-1)));
+            }
+        }
+        tickPageController.open_close_Tab();
+    }
 
     //metodo per la connessione al DB
     public static void DB_Connection(){
@@ -178,5 +199,13 @@ public class HelloController {
             }
         }
         return null;
+    }
+    public Object changeScene(String url, ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(loader.load(), 1280, 960);
+        stage.setScene(scene);
+        stage.show();
+        return loader.getController();
     }
 }
