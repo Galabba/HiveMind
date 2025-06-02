@@ -32,8 +32,7 @@ public class LogInController {
     private Text npag;
 
     public ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
-    public Dipendente curr_user;
-    public Manager curr_admin;
+    public GlobalController globalController;
     private static Statement statement;     //Classe per l'invio delle query
     private static ResultSet resultSet;     //Classe per l'output delle query
     private static Connection connection;
@@ -43,7 +42,10 @@ public class LogInController {
     //Controllo Credenziali e Login
     @FXML
     protected void onLogIn() {
+        Dipendente curr_user = null;
+        Manager curr_admin = null;
         try {
+
            statement = connection.createStatement();
            //controlla se l'user è un dipendente
            statement.executeQuery("SELECT * FROM dipendente");
@@ -76,12 +78,12 @@ public class LogInController {
        }
        if (home.isVisible()){
            try {
+               globalController = new GlobalController(curr_user);
                loadTicketPane();
            } catch (SQLException e) {
                throw new RuntimeException(e);
            }
        }
-
 
     }
     //cambio scena Home-->Login
@@ -105,7 +107,7 @@ public class LogInController {
 
     private void loadTicketPane() throws SQLException {
         statement = connection.createStatement();
-        statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+curr_user.getDepart()+"\"");
+        statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+globalController.curr_user.getDepart()+"\"");
         resultSet=statement.getResultSet();
         while(resultSet.next()){
             ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),

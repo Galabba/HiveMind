@@ -44,7 +44,7 @@
                         <Image url="@../../../img/user.png" />
                     </image>
                 </ImageView>
-                <Button layoutX="607.0" layoutY="695.0" mnemonicParsing="false" text="&lt;---" />
+                <Button onAction="#onReturnPressed" layoutX="607.0" layoutY="695.0" mnemonicParsing="false" text="&lt;---" />
             </children>
         </Pane>
 
