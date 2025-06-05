@@ -1,8 +1,12 @@
 package com.example.blacklionclient;
 
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -11,28 +15,37 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class HelloController {
+public class LogInController {
     @FXML
     private Pane home, login;
     @FXML
     private GridPane table;
     @FXML
     private TextField User, Pass;
+    @FXML
+    private Text npag;
+
     public ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
-    public Dipendente curr_user;
-    public Manager curr_admin;
+    public GlobalController globalController;
     private static Statement statement;     //Classe per l'invio delle query
     private static ResultSet resultSet;     //Classe per l'output delle query
     private static Connection connection;
+    private int curr_pag=1, page_max;
+    private TicketPageController tickPageController=new TicketPageController();
 
     //Controllo Credenziali e Login
     @FXML
     protected void onLogIn() {
+        Dipendente curr_user = null;
+        Manager curr_admin = null;
         try {
+
            statement = connection.createStatement();
            //controlla se l'user è un dipendente
            statement.executeQuery("SELECT * FROM dipendente");
@@ -65,44 +78,89 @@ public class HelloController {
        }
        if (home.isVisible()){
            try {
+               globalController = new GlobalController(curr_user);
                loadTicketPane();
            } catch (SQLException e) {
                throw new RuntimeException(e);
            }
        }
 
-
     }
-
     //cambio scena Home-->Login
     @FXML
     protected void onLogOut(){
         home.setVisible(false);
         login.setVisible(true);
     }
+    @FXML
+    protected void onNextPage(){
+        if(curr_pag < page_max){
+            loadPageTicketPane(curr_pag+1);
+        }else{}
+    }
+    @FXML
+    protected void onPrevPage(){
+        if(curr_pag > 1){
+            loadPageTicketPane(curr_pag-1);
+        }else{}
+    }
 
     private void loadTicketPane() throws SQLException {
         statement = connection.createStatement();
-        statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+curr_user.getDepart()+"\"");
+        statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+globalController.curr_user.getDepart()+"\"");
         resultSet=statement.getResultSet();
         while(resultSet.next()){
             ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),
                     resultSet.getString("Status"), resultSet.getString("Dipartimento"), resultSet.getInt("idTicket")));
         }
-        int i=0;
+        page_max =(int) Math.ceil((double)ticketList.size()/5);
+        loadPageTicketPane(1);
+    }
+    private void loadPageTicketPane(int n_page){
+        curr_pag=n_page;
+        int i=(5*(n_page-1));
         for (Node node : table.getChildren()) {
             if (node instanceof Button){
-                if(ticketList.get(i)!=null){
+                    ((Button) node).setVisible(false);
+                    ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(false);
+                    ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(false);
+            }
+        }
+        for (Node node : table.getChildren()) {
+            if (node instanceof Button){
+                if(i<ticketList.size() && ticketList.get(i)!=null){
+                    ((Button) node).setVisible(true);
                     ((Button) node).setText(ticketList.get(i).getNome());
+                    ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(true);
                     ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setText(ticketList.get(i).getDescr());
+                    ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(true);
                     ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setImage(new Image(getClass().getResourceAsStream("/img/"+ticketList.get(i).getStatus()+".png")));
-                i++;
+                    i++;
                 }
                 else{
                     break;
                 }
             }
         }
+        if (ticketList.size()>5){
+            npag.setText(curr_pag+"/"+ page_max);
+        }
+    }
+
+    @FXML
+    public void onTicketSelected(ActionEvent actionEvent){
+        Button buttSelected = (Button) actionEvent.getSource();
+        try {
+            tickPageController=(TicketPageController) changeScene("TicketPage.fxml", actionEvent);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        for (int i=0; i<5; i++){
+            if (Integer.parseInt(buttSelected.getId())==i){
+                tickPageController.tickSelected=ticketList.get(i+(5*(curr_pag-1)));
+            }
+        }
+        tickPageController.open_close_Tab();
     }
 
     //metodo per la connessione al DB
@@ -143,5 +201,13 @@ public class HelloController {
             }
         }
         return null;
+    }
+    public Object changeScene(String url, ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(loader.load(), 1280, 960);
+        stage.setScene(scene);
+        stage.show();
+        return loader.getController();
     }
 }

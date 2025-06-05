@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.HelloController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="960.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.LogInController">
    <children>
       <Pane fx:id="login" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" StackPane.alignment="CENTER">
          <children>
@@ -109,27 +109,27 @@
                         <Image url="@../../../img/stop.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="tick1" mnemonicParsing="false" prefHeight="70.0" prefWidth="124.0" text="Test" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+                  <Button id="0" mnemonicParsing="false" onAction="#onTicketSelected" prefHeight="70.0" prefWidth="124.0" text="Test" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button fx:id="tick2" layoutX="69.0" layoutY="104.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="124.0" text="Test" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+                  <Button id="1" layoutX="69.0" layoutY="104.0" mnemonicParsing="false" onAction="#onTicketSelected" prefHeight="70.0" prefWidth="124.0" text="Test" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button fx:id="tick3" layoutX="69.0" layoutY="104.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="124.0" text="Test" GridPane.halignment="CENTER" GridPane.rowIndex="3">
+                  <Button id="2" layoutX="69.0" layoutY="104.0" mnemonicParsing="false" onAction="#onTicketSelected" prefHeight="70.0" prefWidth="124.0" text="Test" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="3">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button fx:id="tick4" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="124.0" text="Test" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+                  <Button id="3" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" onAction="#onTicketSelected" prefHeight="70.0" prefWidth="124.0" text="Test" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                      <font>
                         <Font size="27.0" />
                      </font>
                   </Button>
-                  <Button fx:id="tick5" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="124.0" text="Test" GridPane.halignment="CENTER" GridPane.rowIndex="5">
+                  <Button id="4" layoutX="10.0" layoutY="190.0" mnemonicParsing="false" onAction="#onTicketSelected" prefHeight="70.0" prefWidth="124.0" text="Test" wrapText="true" GridPane.halignment="CENTER" GridPane.rowIndex="5">
                      <font>
                         <Font size="27.0" />
                      </font>
@@ -141,8 +141,8 @@
                   <TextArea fx:id="desc5" editable="false" layoutX="252.0" layoutY="353.0" prefHeight="200.0" prefWidth="200.0" stylesheets="@../../../css/hive_mind.css" wrapText="true" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                </children>
             </GridPane>
-            <Button fx:id="next" layoutX="687.0" layoutY="713.0" mnemonicParsing="false" text="--&gt;" />
-            <Button fx:id="prev" layoutX="535.0" layoutY="713.0" mnemonicParsing="false" text="&lt;--" />
+            <Button layoutX="687.0" layoutY="713.0" mnemonicParsing="false" onAction="#onNextPage" text="--&gt;" />
+            <Button layoutX="535.0" layoutY="713.0" mnemonicParsing="false" onAction="#onPrevPage" text="&lt;--" />
             <Text fx:id="npag" layoutX="626.0" layoutY="729.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1/1)" />
             <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
               <items>
@@ -150,6 +150,16 @@
                 <MenuItem mnemonicParsing="false" onAction="#onLogOut" text="Log Out" />
               </items>
             </MenuButton>
+            <Text fx:id="user1" layoutX="87.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER" wrappingWidth="71.8486328125">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ImageView fitHeight="75.0" fitWidth="105.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../img/user.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>
