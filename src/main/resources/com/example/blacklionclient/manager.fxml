@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text layoutX="468.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department Display" textAlignment="CENTER" wrappingWidth="354.13671875">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Text>
+      <TextField layoutX="650.0" layoutY="266.0" snapToPixel="false" text="Il tuo Dipatimento" />
+      <Text layoutX="479.0" layoutY="289.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" wrappingWidth="152.3349609375">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Text>
+      <Button layoutX="482.0" layoutY="331.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Create Ticket" />
+      <Button layoutX="663.0" layoutY="332.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Remove Ticket" />
+      <Button layoutX="569.0" layoutY="421.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="147.0" text="Statistics" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Button>
+      <ImageView fitHeight="75.0" fitWidth="105.0" layoutX="24.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/user.png" />
+         </image>
+      </ImageView>
+      <Text fx:id="user1" layoutX="97.0" layoutY="69.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER" wrappingWidth="71.8486328125">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Text>
+      <MenuButton layoutX="1105.0" layoutY="62.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
+         <items>
+            <MenuItem mnemonicParsing="false" text="Account" />
+            <MenuItem mnemonicParsing="false" onAction="#onLogOut" text="Log Out" />
+         </items>
+      </MenuButton>
+   </children>
+</Pane>
