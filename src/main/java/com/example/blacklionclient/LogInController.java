@@ -153,7 +153,7 @@ public class LogInController {
         }
         for (int i=0; i<5; i++){
             if (Integer.parseInt(buttSelected.getId())==i){
-                ticketC.tickSelected=gbC.ticketList.get(i+(5*(curr_pag-1)));
+                ticketC.gbC.curr_user.ticket=gbC.ticketList.get(i+(5*(curr_pag-1)));
             }
         }
         ticketC.openTab();

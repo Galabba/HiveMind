@@ -22,22 +22,30 @@ public class TicketPageController {
     @FXML
     public TextField depField;
     @FXML
-    public Pane ticketPageRoot;
-    @FXML
     public Button tickName, start, stop, finish;
     @FXML
     private Text user;
 
     public GlobalController gbC;
     private LogInController loginC;
-    public Ticket tickSelected;
 
     @FXML
     protected void openTab(){
-            tickName.setText(tickSelected.nome);
-            depField.setText(tickSelected.depart);
-            descrField.setText(tickSelected.descr);
+            tickName.setText(gbC.curr_user.ticket.nome);
+            depField.setText(gbC.curr_user.ticket.depart);
+            descrField.setText(gbC.curr_user.ticket.descr);
             user.setText(gbC.curr_user.getUsername());
+            if(gbC.curr_user.ticket.getStatus().equals("start")){
+                finish.setOpacity(0.3);
+                stop.setOpacity(0.3);
+            }
+            else if (gbC.curr_user.ticket.getStatus().equals("progress")) {
+                start.setOpacity(0.3);
+            }
+            else if (gbC.curr_user.ticket.getStatus().equals("stop")) {
+                stop.setOpacity(0.3);
+                finish.setOpacity(0.3);
+            }
     }
     @FXML
     protected void onReturnPressed(ActionEvent event) throws IOException, SQLException {
