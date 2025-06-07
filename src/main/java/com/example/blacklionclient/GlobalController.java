@@ -13,4 +13,6 @@ public class GlobalController {
     public GlobalController(Manager curr_admin){
         this.curr_admin=curr_admin;
     }
+
+
 }
