@@ -19,6 +19,7 @@ public class HelloApplication extends Application {
     }
     public static void main(String[] args) {
         LogInController.DB_Connection();    //metodo della classe HelloController per la connessione al DB-MySQL
+        TicketPageController.DB_connection();
         launch();
     }
 }

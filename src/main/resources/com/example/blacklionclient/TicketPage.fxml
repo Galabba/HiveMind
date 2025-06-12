@@ -25,13 +25,13 @@
                   <Font size="18.0" />
                </font></TextArea>
                 <TextField fx:id="depField" layoutX="733.0" layoutY="274.0" prefHeight="70.0" prefWidth="225.0" />
-                <Button fx:id="start" layoutX="726.0" layoutY="428.0" mnemonicParsing="false" text="Start" />
-                <Button fx:id="stop" layoutX="846.0" layoutY="428.0" mnemonicParsing="false" text="Stop" />
-                <Button fx:id="finish" layoutX="958.0" layoutY="428.0" mnemonicParsing="false" text="Finish" />
+                <Button fx:id="start" onAction="#onStartPressed" layoutX="726.0" layoutY="428.0" mnemonicParsing="false" text="Start" />
+                <Button fx:id="stop" onAction="#onStopPressed" layoutX="846.0" layoutY="428.0" mnemonicParsing="false" text="Stop" />
+                <Button fx:id="finish" onAction="#onFinishPressed" layoutX="958.0" layoutY="428.0" mnemonicParsing="false" text="Finish" />
                 <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
                     <items>
                         <MenuItem mnemonicParsing="false" text="Account" />
-                        <MenuItem mnemonicParsing="false" onAction="#onLogOut" text="Log Out" />
+                        <MenuItem mnemonicParsing="false" onAction="#fireLogOut" text="Log Out" />
                     </items>
                 </MenuButton>
                 <Text fx:id="user" layoutX="87.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER" wrappingWidth="71.8486328125">
@@ -44,9 +44,10 @@
                         <Image url="@../../../img/user.png" />
                     </image>
                 </ImageView>
-                <Button onAction="#onReturnPressed" layoutX="607.0" layoutY="695.0" mnemonicParsing="false" text="&lt;---" />
+                <Button layoutX="607.0" layoutY="695.0" mnemonicParsing="false" onAction="#onReturnPressed" text="&lt;---" />
             </children>
         </Pane>
+      <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOut" text="Button" visible="false" />
 
     </children>
 </Pane>

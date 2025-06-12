@@ -87,6 +87,8 @@ public class LogInController {
     protected void onLogOut(){
         home.setVisible(false);
         login.setVisible(true);
+        User.setText("");
+        Pass.setText("");
     }
     @FXML
     protected void onNextPage(){
@@ -144,6 +146,7 @@ public class LogInController {
     }
     @FXML
     public void onTicketSelected(ActionEvent actionEvent){
+
         Button buttSelected = (Button) actionEvent.getSource();
         try {
             ticketC=(TicketPageController) changeScene("TicketPage.fxml", actionEvent);
@@ -156,6 +159,7 @@ public class LogInController {
                 ticketC.gbC.curr_user.ticket=gbC.ticketList.get(i+(5*(curr_pag-1)));
             }
         }
+        gbC.ticketList=new ArrayList<Ticket>();
         ticketC.openTab();
     }
 
