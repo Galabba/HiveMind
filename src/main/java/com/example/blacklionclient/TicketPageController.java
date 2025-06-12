@@ -8,8 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -29,7 +27,6 @@ public class TicketPageController {
     public GlobalController gbC;
     private LogInController loginC;
     private static PreparedStatement statement;     //Classe per l'invio delle query
-    private static ResultSet resultSet;     //Classe per l'output delle query
     private static Connection connection;
 
     @FXML
@@ -88,7 +85,7 @@ public class TicketPageController {
         return loader.getController();
     }
 
-    public void onStartPressed(ActionEvent event) throws SQLException {
+    public void onStartPressed() throws SQLException {
         statement = connection.prepareStatement("UPDATE ticket\n" +
                 "SET status = 'progress'\n" +
                 "WHERE idTicket= ?;");
@@ -97,7 +94,7 @@ public class TicketPageController {
         gbC.curr_user.ticket.setStatus("progress");
         openTab();
     }
-    public void onStopPressed(ActionEvent event)  throws SQLException {
+    public void onStopPressed()  throws SQLException {
         statement = connection.prepareStatement("UPDATE ticket\n" +
                 "SET status = 'stop'\n" +
                 "WHERE idTicket= ?;");
@@ -106,7 +103,7 @@ public class TicketPageController {
         gbC.curr_user.ticket.setStatus("stop");
         openTab();
     }
-    public void onFinishPressed(ActionEvent event)  throws SQLException {
+    public void onFinishPressed()  throws SQLException {
         statement = connection.prepareStatement("UPDATE ticket\n" +
                 "SET status = 'finish'\n" +
                 "WHERE idTicket= ?;");
@@ -136,7 +133,6 @@ public class TicketPageController {
         }
         catch(Exception e){
             //controllo errori nella connessione per il driver "jdbc" utilizzato dalla libreria "MySQL"
-            System.out.println(e);
         }
     }
 }

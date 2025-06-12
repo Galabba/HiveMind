@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class GlobalController {
     public Dipendente curr_user;
     public Manager curr_admin;
-    public ArrayList<Ticket> ticketList = new ArrayList<Ticket>();
+    public ArrayList<Ticket> ticketList = new ArrayList<>();
 
     public GlobalController(Dipendente curr_user){
         this.curr_user=curr_user;

@@ -94,13 +94,13 @@ public class LogInController {
     protected void onNextPage(){
         if(curr_pag < page_max){
             loadPageTicketPane(curr_pag+1);
-        }else{}
+        }
     }
     @FXML
     protected void onPrevPage(){
         if(curr_pag > 1){
             loadPageTicketPane(curr_pag-1);
-        }else{}
+        }
     }
     public void loadTicketPane() throws SQLException {
         user.setText(gbC.curr_user.getUsername());
@@ -119,19 +119,19 @@ public class LogInController {
         int i=(5*(n_page-1));
         for (Node node : table.getChildren()) {
             if (node instanceof Button){
-                    ((Button) node).setVisible(false);
-                    ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(false);
-                    ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(false);
+                    node.setVisible(false);
+                    (getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(false);
+                    (getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(false);
             }
         }
         for (Node node : table.getChildren()) {
             if (node instanceof Button){
                 if(i<gbC.ticketList.size() && gbC.ticketList.get(i)!=null){
-                    ((Button) node).setVisible(true);
+                    (node).setVisible(true);
                     ((Button) node).setText(gbC.ticketList.get(i).getNome());
-                    ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(true);
+                    (getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setVisible(true);
                     ((TextArea) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 1,table)).setText(gbC.ticketList.get(i).getDescr());
-                    ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(true);
+                    (getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setVisible(true);
                     ((ImageView) getNodeByRowColumnIndex(GridPane.getRowIndex(node), 2,table)).setImage(new Image(getClass().getResourceAsStream("/img/"+gbC.ticketList.get(i).getStatus()+".png")));
                     i++;
                 }
@@ -159,7 +159,7 @@ public class LogInController {
                 ticketC.gbC.curr_user.ticket=gbC.ticketList.get(i+(5*(curr_pag-1)));
             }
         }
-        gbC.ticketList=new ArrayList<Ticket>();
+        gbC.ticketList=new ArrayList<>();
         ticketC.openTab();
     }
 
@@ -184,7 +184,6 @@ public class LogInController {
         }
         catch(Exception e){
             //controllo errori nella connessione per il driver "jdbc" utilizzato dalla libreria "MySQL"
-            System.out.println(e);
         }
     }
     public Node getNodeByRowColumnIndex(final int row, final int column, GridPane gridPane) {
