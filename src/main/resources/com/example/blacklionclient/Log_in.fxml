@@ -150,7 +150,7 @@
                 <MenuItem mnemonicParsing="false" onAction="#onLogOut" text="Log Out" />
               </items>
             </MenuButton>
-            <Text fx:id="user1" layoutX="87.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER" wrappingWidth="71.8486328125">
+            <Text fx:id="user" layoutX="87.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="USER" wrappingWidth="71.8486328125">
                <font>
                   <Font size="18.0" />
                </font>
