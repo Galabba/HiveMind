@@ -1,5 +1,7 @@
 package com.example.blacklionclient;
 
+import com.example.blacklionclient.controllers.LogInController;
+import com.example.blacklionclient.controllers.TicketPageController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package com.example.blacklionclient;
+package com.example.blacklionclient.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -38,15 +38,7 @@ public class ManagerPageController {
     }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
-        loginC=(LogInController) changeScene("Log_in.fxml", event);
+        loginC=(LogInController) gbC.changeScene("Log_in.fxml", event);
     }
 
-    public Object changeScene(String url, ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(loader.load(), 1280, 960);
-        stage.setScene(scene);
-        stage.show();
-        return loader.getController();
-    }
 }

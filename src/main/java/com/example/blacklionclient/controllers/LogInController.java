@@ -1,5 +1,8 @@
-package com.example.blacklionclient;
+package com.example.blacklionclient.controllers;
 
+import com.example.blacklionclient.Dipendente;
+import com.example.blacklionclient.Manager;
+import com.example.blacklionclient.Ticket;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -84,7 +87,7 @@ public class LogInController {
        else if(curr_admin!=null && curr_admin.getLogin()){
            try {
                gbC = new GlobalController(curr_admin);
-               managerC =(ManagerPageController) changeScene("manager.fxml", event);
+               managerC =(ManagerPageController) gbC.changeScene("manager.fxml", event);
                managerC.gbC=this.gbC;
                managerC.openTab();
            } catch (IOException e) {
@@ -159,7 +162,7 @@ public class LogInController {
     public void onTicketSelected(ActionEvent actionEvent){
         Button buttSelected = (Button) actionEvent.getSource();
         try {
-            ticketC=(TicketPageController) changeScene("TicketPage.fxml", actionEvent);
+            ticketC=(TicketPageController) gbC.changeScene("TicketPage.fxml", actionEvent);
             ticketC.gbC=this.gbC;
         } catch (IOException e) {
             e.printStackTrace();
@@ -210,13 +213,5 @@ public class LogInController {
             }
         }
         return null;
-    }
-    public Object changeScene(String url, ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource(url));
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(loader.load(), 1280, 960);
-        stage.setScene(scene);
-        stage.show();
-        return loader.getController();
     }
 }
