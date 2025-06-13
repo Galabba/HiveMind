@@ -2,13 +2,9 @@ package com.example.blacklionclient.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -23,7 +19,6 @@ public class ManagerPageController {
     private Button logOutButton;
 
     public GlobalController gbC;
-    private LogInController loginC;
     private static PreparedStatement statement;     //Classe per l'invio delle query
     private static Connection connection;
 
@@ -38,7 +33,7 @@ public class ManagerPageController {
     }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
-        loginC=(LogInController) gbC.changeScene("Log_in.fxml", event);
+        LogInController loginC = (LogInController) gbC.changeScene("Log_in.fxml", event);
     }
 
 }

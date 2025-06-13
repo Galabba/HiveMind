@@ -33,8 +33,6 @@ public class LogInController {
     @FXML
     private Text npag, user;
     public GlobalController gbC;
-    private TicketPageController ticketC;
-    private ManagerPageController managerC;
     private static Statement statement;     //Classe per l'invio delle query
     private static ResultSet resultSet;     //Classe per l'output delle query
     private static Connection connection;
@@ -87,7 +85,7 @@ public class LogInController {
        else if(curr_admin!=null && curr_admin.getLogin()){
            try {
                gbC = new GlobalController(curr_admin);
-               managerC =(ManagerPageController) gbC.changeScene("manager.fxml", event);
+               ManagerPageController managerC =(ManagerPageController) gbC.changeScene("manager.fxml", event);
                managerC.gbC=this.gbC;
                managerC.openTab();
            } catch (IOException e) {
@@ -159,20 +157,21 @@ public class LogInController {
         }
     }
     @FXML
-    public void onTicketSelected(ActionEvent actionEvent){
+    public void onTicketSelected(ActionEvent actionEvent) {
         Button buttSelected = (Button) actionEvent.getSource();
+        TicketPageController ticketC = null;
         try {
-            ticketC=(TicketPageController) gbC.changeScene("TicketPage.fxml", actionEvent);
-            ticketC.gbC=this.gbC;
+            ticketC = (TicketPageController) gbC.changeScene("TicketPage.fxml", actionEvent);
+            ticketC.gbC = this.gbC;
         } catch (IOException e) {
             e.printStackTrace();
         }
-        for (int i=0; i<5; i++){
-            if (Integer.parseInt(buttSelected.getId())==i){
-                ticketC.gbC.curr_user.ticket=gbC.ticketList.get(i+(5*(curr_pag-1)));
+        for (int i = 0; i < 5; i++) {
+            if (Integer.parseInt(buttSelected.getId()) == i) {
+                ticketC.gbC.curr_user.ticket = gbC.ticketList.get(i + (5 * (curr_pag - 1)));
             }
         }
-        gbC.ticketList=new ArrayList<>();
+        gbC.ticketList = new ArrayList<>();
         ticketC.openTab();
     }
 
