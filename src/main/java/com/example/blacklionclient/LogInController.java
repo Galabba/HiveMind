@@ -31,6 +31,7 @@ public class LogInController {
     private Text npag, user;
     public GlobalController gbC;
     private TicketPageController ticketC;
+    private ManagerPageController managerC;
     private static Statement statement;     //Classe per l'invio delle query
     private static ResultSet resultSet;     //Classe per l'output delle query
     private static Connection connection;
@@ -38,7 +39,7 @@ public class LogInController {
 
     //Controllo Credenziali e Login
     @FXML
-    protected void onLogIn() {
+    protected void onLogIn(ActionEvent event) {
         Dipendente curr_user = null;
         Manager curr_admin = null;
         try {
@@ -72,12 +73,22 @@ public class LogInController {
         } catch (SQLException e) {
            throw new RuntimeException(e);
        }
-       if (home.isVisible()){
+       if (curr_user!=null && curr_user.getLogin()){
            try {
                gbC = new GlobalController(curr_user);
                loadTicketPane();
            } catch (SQLException e) {
                throw new RuntimeException(e);
+           }
+       }
+       else if(curr_admin!=null && curr_admin.getLogin()){
+           try {
+               gbC = new GlobalController(curr_admin);
+               managerC =(ManagerPageController) changeScene("manager.fxml", event);
+               managerC.gbC=this.gbC;
+               managerC.openTab();
+           } catch (IOException e) {
+               e.printStackTrace();
            }
        }
 
@@ -146,7 +157,6 @@ public class LogInController {
     }
     @FXML
     public void onTicketSelected(ActionEvent actionEvent){
-
         Button buttSelected = (Button) actionEvent.getSource();
         try {
             ticketC=(TicketPageController) changeScene("TicketPage.fxml", actionEvent);

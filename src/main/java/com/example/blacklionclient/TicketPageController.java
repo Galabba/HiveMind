@@ -66,7 +66,6 @@ public class TicketPageController {
         loginC.login.setVisible(false);
         loginC.loadTicketPane();
     }
-
     @FXML
     protected void fireLogOut(){
         logOutButton.fire();
