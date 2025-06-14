@@ -23,9 +23,9 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Button layoutX="482.0" layoutY="331.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Create Ticket" />
-      <Button layoutX="663.0" layoutY="332.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Remove Ticket" />
-      <Button layoutX="569.0" layoutY="421.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="147.0" text="Statistics" textAlignment="CENTER">
+      <Button onAction="#onCreateTicketPressed" layoutX="482.0" layoutY="331.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Create Ticket" />
+      <Button onAction="#onRemoveTicketPressed" layoutX="663.0" layoutY="332.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Remove Ticket" />
+      <Button onAction="#onStatisticsPressed" layoutX="569.0" layoutY="421.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="147.0" text="Statistics" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>

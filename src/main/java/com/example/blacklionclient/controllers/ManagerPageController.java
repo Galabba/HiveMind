@@ -36,4 +36,13 @@ public class ManagerPageController {
         LogInController loginC = (LogInController) gbC.changeScene("Log_in.fxml", event);
     }
 
+    public void onCreateTicketPressed(ActionEvent actionEvent) throws IOException {
+        CreateTicketController createticketC =(CreateTicketController) gbC.changeScene("CreateTicket.fxml", actionEvent);
+        createticketC.gbC=this.gbC;
+        createticketC.openTab();
+    }
+    public void onRemoveTicketPressed(ActionEvent actionEvent) {
+    }
+    public void onStatisticsPressed(ActionEvent actionEvent) {
+    }
 }
