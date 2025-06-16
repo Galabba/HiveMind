@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.controllers.CreateTicketController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.controllers.CreateTicketController">
    <children>
       <Text layoutX="468.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Ticket" textAlignment="CENTER" wrappingWidth="354.13671875">
          <font>
@@ -53,7 +53,7 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Button onAction="#onCreatePressed" layoutX="758.0" layoutY="450.0" mnemonicParsing="false" text="Create" />
+      <Button layoutX="758.0" layoutY="450.0" mnemonicParsing="false" onAction="#onCreatePressed" text="Create" />
       <Pane fx:id="descrAlert" layoutX="485.0" layoutY="234.0" prefHeight="135.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
          <children>
             <Text layoutX="43.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Description its too long!" textAlignment="CENTER">
@@ -66,7 +66,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button onAction="#openTab" ellipsisString="Ok" layoutX="135.0" layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" text="Ok" />
+            <Button ellipsisString="Ok" layoutX="135.0" layoutY="81.0" mnemonicParsing="false" onAction="#openTab" prefHeight="40.0" prefWidth="53.0" text="Ok" />
          </children>
       </Pane>
       <Pane fx:id="nameAlert1" layoutX="485.0" layoutY="237.0" prefHeight="135.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
@@ -81,7 +81,7 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button onAction="#openTab" ellipsisString="Ok" layoutX="135.0" layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" text="Ok" />
+            <Button ellipsisString="Ok" layoutX="135.0" layoutY="81.0" mnemonicParsing="false" onAction="#openTab" prefHeight="40.0" prefWidth="53.0" text="Ok" />
          </children>
       </Pane>
       <Pane fx:id="nameAlert2" layoutX="485.0" layoutY="237.0" prefHeight="135.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
@@ -96,8 +96,13 @@
                   <Font size="18.0" />
                </font>
             </Text>
-            <Button onAction="#openTab" ellipsisString="Ok" layoutX="135.0" layoutY="81.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="53.0" text="Ok" />
+            <Button ellipsisString="Ok" layoutX="135.0" layoutY="81.0" mnemonicParsing="false" onAction="#openTab" prefHeight="40.0" prefWidth="53.0" text="Ok" />
          </children>
       </Pane>
+      <Text fx:id="confirmation" layoutX="520.0" layoutY="636.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket succesfully created!" textAlignment="CENTER" visible="false" wrappingWidth="259.3257812500001">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

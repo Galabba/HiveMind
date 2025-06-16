@@ -9,6 +9,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class ManagerPageController {
     @FXML
@@ -19,8 +20,6 @@ public class ManagerPageController {
     private Button logOutButton;
 
     public GlobalController gbC;
-    private static PreparedStatement statement;     //Classe per l'invio delle query
-    private static Connection connection;
 
     public void openTab(){
         user1.setText(gbC.curr_admin.getUsername());
@@ -41,7 +40,10 @@ public class ManagerPageController {
         createticketC.gbC=this.gbC;
         createticketC.openTab();
     }
-    public void onRemoveTicketPressed(ActionEvent actionEvent) {
+    public void onRemoveTicketPressed(ActionEvent actionEvent) throws IOException, SQLException {
+        RemoveTicketController removeTicketC = (RemoveTicketController) gbC.changeScene("RemoveTicket.fxml", actionEvent);
+        removeTicketC.gbC = this.gbC;
+        removeTicketC.openTab();
     }
     public void onStatisticsPressed(ActionEvent actionEvent) {
     }

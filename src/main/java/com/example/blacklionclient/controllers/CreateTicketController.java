@@ -9,11 +9,12 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.*;
 
 public class CreateTicketController {
 
     @FXML
-    Text user1;
+    Text user1, confirmation;
     @FXML
     Button logOutButton;
     @FXML
@@ -23,6 +24,8 @@ public class CreateTicketController {
     @FXML
     Pane nameAlert1, nameAlert2, descrAlert;
     public GlobalController gbC;
+    private static PreparedStatement statement;     //Classe per l'invio delle query
+    private static Connection connection;
 
 
     public void openTab(){
@@ -31,6 +34,7 @@ public class CreateTicketController {
         nameAlert1.setVisible(false);
         nameAlert2.setVisible(false);
         descrAlert.setVisible(false);
+        confirmation.setVisible(false);
     }
 
     @FXML
@@ -48,18 +52,48 @@ public class CreateTicketController {
         managerC.openTab();
     }
 
-    public void onCreatePressed(ActionEvent actionEvent) {
+    public void onCreatePressed(ActionEvent actionEvent) throws SQLException {
+        confirmation.setVisible(false);
         if (descrField.getText().length()>=255){
             descrAlert.setVisible(true);
-            System.out.println("ciao");
         } else if (nameField.getText().length()>=100) {
             nameAlert1.setVisible(true);
         } else if (nameField.getText().length() == 0) {
             nameAlert2.setVisible(true);
-            System.out.println("ciao3");
         }
         else{
-            System.out.println("ciao2");
+                statement = connection.prepareStatement("INSERT INTO ticket (Nome, Descrizione, Status, Dipartimento) VALUES (?, ?, ?, ?)");
+                statement.setString(1, nameField.getText());
+                statement.setString(2, descrField.getText());
+                statement.setString(3, "start");
+                statement.setString(4, gbC.curr_admin.getDepart());
+                statement.executeUpdate();
+                confirmation.setVisible(true);
+                nameField.setText("");
+                descrField.setText("");
+        }
+    }
+
+    public static void DB_connection() {
+        try {
+            // Try per la connettività al DB
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/hivemind",
+                    "root", "rocchio");
+
+            // mydb nome database
+            // mydbuser nome dell utente
+            // mydpassword password del DB
+        }
+        catch (SQLException ex) {
+            // controllo errori per la connessione al DB-MySQL
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+        catch(Exception e){
+            //controllo errori nella connessione per il driver "jdbc" utilizzato dalla libreria "MySQL"
         }
     }
 }
