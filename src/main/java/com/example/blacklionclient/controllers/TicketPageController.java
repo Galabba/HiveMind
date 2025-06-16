@@ -55,7 +55,7 @@ public class TicketPageController {
     }
     @FXML
     protected void onReturnPressed(ActionEvent event) throws IOException, SQLException {
-        LogInController loginC=(LogInController) gbC.changeScene("Log_in.fxml", event);
+        LogInPageController loginC=(LogInPageController) gbC.changeScene("Log_in.fxml", event);
         loginC.gbC = this.gbC;
         loginC.home.setVisible(true);
         loginC.login.setVisible(false);
@@ -67,7 +67,7 @@ public class TicketPageController {
     }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
-         LogInController loginC=(LogInController) gbC.changeScene("Log_in.fxml", event);
+         LogInPageController loginC=(LogInPageController) gbC.changeScene("Log_in.fxml", event);
     }
 
     public void onStartPressed() throws SQLException {

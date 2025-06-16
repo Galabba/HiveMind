@@ -12,4 +12,19 @@ public class Dipendente extends User {
         this.nTicketRis=nTicketRis;
     }
 
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public int getnTicketRis() {
+        return nTicketRis;
+    }
+
+    public void setnTicketRis(int nTicketRis) {
+        this.nTicketRis = nTicketRis;
+    }
 }

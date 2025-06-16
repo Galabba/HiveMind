@@ -18,7 +18,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public class RemoveTicketController {
+public class RemoveTicketPageController {
     @FXML
     Text user, npag, confirmation;
     @FXML
@@ -48,7 +48,7 @@ public class RemoveTicketController {
     }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
-        LogInController loginC = (LogInController) gbC.changeScene("Log_in.fxml", event);
+        LogInPageController loginC = (LogInPageController) gbC.changeScene("Log_in.fxml", event);
     }
     @FXML
     public void onReturnPressed(ActionEvent actionEvent) throws IOException {

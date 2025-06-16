@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.sql.*;
 
-public class CreateTicketController {
+public class CreateTicketPageController {
 
     @FXML
     Text user1, confirmation;
@@ -43,7 +43,7 @@ public class CreateTicketController {
     }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
-        LogInController loginC = (LogInController) gbC.changeScene("Log_in.fxml", event);
+        LogInPageController loginC = (LogInPageController) gbC.changeScene("Log_in.fxml", event);
     }
 
     public void onReturnPressed(ActionEvent actionEvent) throws IOException {

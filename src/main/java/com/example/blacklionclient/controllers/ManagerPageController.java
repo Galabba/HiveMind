@@ -7,8 +7,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ManagerPageController {
@@ -32,19 +30,22 @@ public class ManagerPageController {
     }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
-        LogInController loginC = (LogInController) gbC.changeScene("Log_in.fxml", event);
+        LogInPageController loginC = (LogInPageController) gbC.changeScene("Log_in.fxml", event);
     }
 
     public void onCreateTicketPressed(ActionEvent actionEvent) throws IOException {
-        CreateTicketController createticketC =(CreateTicketController) gbC.changeScene("CreateTicket.fxml", actionEvent);
+        CreateTicketPageController createticketC =(CreateTicketPageController) gbC.changeScene("CreateTicket.fxml", actionEvent);
         createticketC.gbC=this.gbC;
         createticketC.openTab();
     }
     public void onRemoveTicketPressed(ActionEvent actionEvent) throws IOException, SQLException {
-        RemoveTicketController removeTicketC = (RemoveTicketController) gbC.changeScene("RemoveTicket.fxml", actionEvent);
+        RemoveTicketPageController removeTicketC = (RemoveTicketPageController) gbC.changeScene("RemoveTicket.fxml", actionEvent);
         removeTicketC.gbC = this.gbC;
         removeTicketC.openTab();
     }
-    public void onStatisticsPressed(ActionEvent actionEvent) {
+    public void onStatisticsPressed(ActionEvent actionEvent) throws SQLException, IOException {
+        StatisticsPageController statisticsC = (StatisticsPageController) gbC.changeScene("Statistics.fxml", actionEvent);
+        statisticsC.gbC = this.gbC;
+        statisticsC.openTab();
     }
 }
