@@ -24,7 +24,7 @@ public class RemoveTicketPageController {
     @FXML
     GridPane table;
     @FXML
-    Button logOutButton, buttonSelected;
+    Button logOutButton, buttonSelected, accountButton;
     @FXML
     Pane confirmationAlert;
 
@@ -46,6 +46,8 @@ public class RemoveTicketPageController {
     protected void fireLogOut(){
         logOutButton.fire();
     }
+    @FXML
+    protected void fireAccountPage(){ accountButton.fire(); }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
         LogInPageController loginC = (LogInPageController) gbC.changeScene("Log_in.fxml", event);
@@ -94,8 +96,10 @@ public class RemoveTicketPageController {
         statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+ gbC.curr_admin.getDepart()+"\"");
         resultSet=statement.getResultSet();
         while(resultSet.next()){
-            gbC.ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),
-                    resultSet.getString("Status"), resultSet.getString("Dipartimento"), resultSet.getInt("idTicket")));
+            if(resultSet.getString("Status").equals("finish")==false){
+                gbC.ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),
+                        resultSet.getString("Status"), resultSet.getString("Dipartimento"), resultSet.getInt("idTicket")));
+            }
         }
         page_max =(int) Math.ceil((double)gbC.ticketList.size()/5);
         loadPageTicketPane(1);
@@ -169,4 +173,9 @@ public class RemoveTicketPageController {
     }
 
 
+    public void onAccountPressed(ActionEvent event) throws IOException, SQLException {
+        AccountPageController accountC = (AccountPageController) gbC.changeScene("Account.fxml", event);
+        accountC.gbC = this.gbC;
+        accountC.openTab();
+    }
 }

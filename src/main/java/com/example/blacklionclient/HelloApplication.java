@@ -24,6 +24,7 @@ public class HelloApplication extends Application {
         CreateTicketPageController.DB_connection();
         RemoveTicketPageController.DB_Connection();
         StatisticsPageController.DB_Connection();
+        AccountPageController.DB_Connection();
         launch();
     }
 }

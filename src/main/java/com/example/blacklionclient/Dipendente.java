@@ -4,7 +4,7 @@ public class Dipendente extends User {
     private String city;
     private int nTicketRis;
 
-    public Ticket ticket;
+    public Ticket selectedTicket, lastResolvedTicket, lastStartedTicket;
 
     public Dipendente(String username, String passw, String name, String surname, String depart, String city, int nTicketRis) {
         super(username, passw, name, surname, depart);
@@ -24,7 +24,7 @@ public class Dipendente extends User {
         return nTicketRis;
     }
 
-    public void setnTicketRis(int nTicketRis) {
-        this.nTicketRis = nTicketRis;
+    public void resolvedTicket(){
+        nTicketRis++;
     }
 }

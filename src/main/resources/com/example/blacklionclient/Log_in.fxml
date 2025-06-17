@@ -146,7 +146,7 @@
             <Text fx:id="npag" layoutX="626.0" layoutY="729.0" strokeType="OUTSIDE" strokeWidth="0.0" text="(1/1)" />
             <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
               <items>
-                <MenuItem mnemonicParsing="false" text="Account" />
+                <MenuItem mnemonicParsing="false" onAction="#fireAccountPage" text="Account" />
                 <MenuItem mnemonicParsing="false" onAction="#onLogOut" text="Log Out" />
               </items>
             </MenuButton>
@@ -162,5 +162,6 @@
             </ImageView>
          </children>
       </Pane>
+      <Button fx:id="accountButton" onAction="#onAccountPressed" mnemonicParsing="false" text="Button" visible="false" />
    </children>
 </StackPane>

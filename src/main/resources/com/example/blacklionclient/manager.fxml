@@ -23,9 +23,9 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Button onAction="#onCreateTicketPressed" layoutX="482.0" layoutY="331.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Create Ticket" />
-      <Button onAction="#onRemoveTicketPressed" layoutX="663.0" layoutY="332.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="147.0" text="Remove Ticket" />
-      <Button onAction="#onStatisticsPressed" layoutX="569.0" layoutY="421.0" mnemonicParsing="false" prefHeight="57.0" prefWidth="147.0" text="Statistics" textAlignment="CENTER">
+      <Button layoutX="482.0" layoutY="331.0" mnemonicParsing="false" onAction="#onCreateTicketPressed" prefHeight="56.0" prefWidth="147.0" text="Create Ticket" />
+      <Button layoutX="663.0" layoutY="332.0" mnemonicParsing="false" onAction="#onRemoveTicketPressed" prefHeight="56.0" prefWidth="147.0" text="Remove Ticket" />
+      <Button layoutX="569.0" layoutY="421.0" mnemonicParsing="false" onAction="#onStatisticsPressed" prefHeight="57.0" prefWidth="147.0" text="Statistics" textAlignment="CENTER">
          <font>
             <Font size="24.0" />
          </font>
@@ -42,10 +42,11 @@
       </Text>
       <MenuButton layoutX="1105.0" layoutY="62.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
          <items>
-            <MenuItem mnemonicParsing="false" text="Account" />
+            <MenuItem mnemonicParsing="false" onAction="#fireAccountPage" text="Account" />
             <MenuItem mnemonicParsing="false" onAction="#fireLogOut" text="Log Out" />
          </items>
       </MenuButton>
       <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOut" text="Button" visible="false" />
+      <Button fx:id="accountButton" mnemonicParsing="false" onAction="#onAccountPressed" text="Button" visible="false" />
    </children>
 </Pane>

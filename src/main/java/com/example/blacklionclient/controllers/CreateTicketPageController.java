@@ -16,7 +16,7 @@ public class CreateTicketPageController {
     @FXML
     Text user1, confirmation;
     @FXML
-    Button logOutButton;
+    Button logOutButton, accountButton;
     @FXML
     TextField departField, nameField;
     @FXML
@@ -41,6 +41,8 @@ public class CreateTicketPageController {
     protected void fireLogOut(){
         logOutButton.fire();
     }
+    @FXML
+    protected void fireAccountPage(){ accountButton.fire(); }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
         LogInPageController loginC = (LogInPageController) gbC.changeScene("Log_in.fxml", event);
@@ -95,5 +97,11 @@ public class CreateTicketPageController {
         catch(Exception e){
             //controllo errori nella connessione per il driver "jdbc" utilizzato dalla libreria "MySQL"
         }
+    }
+
+    public void onAccountPressed(ActionEvent event) throws IOException, SQLException {
+        AccountPageController accountC = (AccountPageController) gbC.changeScene("Account.fxml", event);
+        accountC.gbC = this.gbC;
+        accountC.openTab();
     }
 }

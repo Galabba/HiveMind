@@ -22,6 +22,8 @@ import java.util.ArrayList;
 
 public class LogInPageController {
     @FXML
+    Button accountButton;
+    @FXML
     public Pane home, login;
     @FXML
     private GridPane table;
@@ -112,13 +114,16 @@ public class LogInPageController {
         }
     }
     public void loadTicketPane() throws SQLException {
+        gbC.ticketList = new ArrayList<>();
         user.setText(gbC.curr_user.getUsername());
         statement = connection.createStatement();
         statement.executeQuery("SELECT * FROM ticket WHERE Dipartimento=\""+ gbC.curr_user.getDepart()+"\"");
         resultSet=statement.getResultSet();
         while(resultSet.next()){
-            gbC.ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),
-                    resultSet.getString("Status"), resultSet.getString("Dipartimento"), resultSet.getInt("idTicket")));
+            if(resultSet.getString("Status").equals("finish")==false){
+                gbC.ticketList.add(new Ticket(resultSet.getString("Nome"), resultSet.getString("Descrizione"),
+                        resultSet.getString("Status"), resultSet.getString("Dipartimento"), resultSet.getInt("idTicket")));
+            }
         }
         page_max =(int) Math.ceil((double)gbC.ticketList.size()/5);
         loadPageTicketPane(1);
@@ -165,10 +170,9 @@ public class LogInPageController {
         }
         for (int i = 0; i < 5; i++) {
             if (Integer.parseInt(buttSelected.getId()) == i) {
-                ticketC.gbC.curr_user.ticket = gbC.ticketList.get(i + (5 * (curr_pag - 1)));
+                ticketC.gbC.curr_user.selectedTicket = gbC.ticketList.get(i + (5 * (curr_pag - 1)));
             }
         }
-        gbC.ticketList = new ArrayList<>();
         ticketC.openTab();
     }
 
@@ -209,5 +213,15 @@ public class LogInPageController {
             }
         }
         return null;
+    }
+
+    @FXML
+    protected void fireAccountPage(){
+        accountButton.fire();
+    }
+    public void onAccountPressed(ActionEvent event) throws IOException, SQLException {
+        AccountPageController accountC = (AccountPageController) gbC.changeScene("Account.fxml", event);
+        accountC.gbC = this.gbC;
+        accountC.openTab();
     }
 }

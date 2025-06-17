@@ -1,6 +1,7 @@
 package com.example.blacklionclient;
 
 public class Manager extends User{
+    private int n_ticketResolvedByDepart;
 
     private Ticket ticketSelected;
 

@@ -22,7 +22,7 @@ public class StatisticsPageController {
     @FXML
     Text user, npag;
     @FXML
-    Button logOutButton;
+    Button logOutButton, accountButton;
     @FXML
     GridPane table;
 
@@ -41,6 +41,8 @@ public class StatisticsPageController {
     protected void fireLogOut(){
         logOutButton.fire();
     }
+    @FXML
+    protected void fireAccountPage(){ accountButton.fire(); }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
         LogInPageController loginC = (LogInPageController) gbC.changeScene("Log_in.fxml", event);
@@ -156,5 +158,11 @@ public class StatisticsPageController {
         if (gbC.userList.size()>5){
             npag.setText(curr_pag+"/"+ page_max);
         }
+    }
+
+    public void onAccountPressed(ActionEvent event) throws IOException, SQLException {
+        AccountPageController accountC = (AccountPageController) gbC.changeScene("Account.fxml", event);
+        accountC.gbC = this.gbC;
+        accountC.openTab();
     }
 }

@@ -30,11 +30,12 @@
       </Text>
       <MenuButton layoutX="1105.0" layoutY="62.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
          <items>
-            <MenuItem mnemonicParsing="false" text="Account" />
+            <MenuItem mnemonicParsing="false" onAction="#fireAccountPage" text="Account" />
             <MenuItem mnemonicParsing="false" onAction="#fireLogOut" text="Log Out" />
          </items>
       </MenuButton>
       <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOut" text="Button" visible="false" />
+      <Button fx:id="accountButton" mnemonicParsing="false" onAction="#onAccountPressed" text="Button" visible="false" />
       <TextArea fx:id="descrField" layoutX="185.0" layoutY="284.0" prefHeight="266.0" prefWidth="373.0" promptText="Ticket Description" stylesheets="@../../../css/hive_mind.css" wrapText="true">
          <font>
             <Font size="18.0" />

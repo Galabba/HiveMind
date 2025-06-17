@@ -15,7 +15,7 @@ public class ManagerPageController {
     @FXML
     private Text user1;
     @FXML
-    private Button logOutButton;
+    private Button logOutButton, accountButton;
 
     public GlobalController gbC;
 
@@ -27,6 +27,10 @@ public class ManagerPageController {
     @FXML
     protected void fireLogOut(){
         logOutButton.fire();
+    }
+    @FXML
+    protected void fireAccountPage(){
+        accountButton.fire();
     }
     @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
@@ -47,5 +51,11 @@ public class ManagerPageController {
         StatisticsPageController statisticsC = (StatisticsPageController) gbC.changeScene("Statistics.fxml", actionEvent);
         statisticsC.gbC = this.gbC;
         statisticsC.openTab();
+    }
+
+    public void onAccountPressed(ActionEvent event) throws IOException, SQLException {
+        AccountPageController accountC = (AccountPageController) gbC.changeScene("Account.fxml", event);
+        accountC.gbC = this.gbC;
+        accountC.openTab();
     }
 }

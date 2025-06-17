@@ -16,7 +16,7 @@ public class TicketPageController {
     @FXML
     public TextField depField;
     @FXML
-    public Button tickName, start, stop, finish, logOutButton;
+    public Button tickName, start, stop, finish, logOutButton, accountButton;
     @FXML
     private Text user;
 
@@ -26,9 +26,9 @@ public class TicketPageController {
 
     @FXML
     protected void openTab(){
-        tickName.setText(gbC.curr_user.ticket.nome);
-        depField.setText(gbC.curr_user.ticket.depart);
-        descrField.setText(gbC.curr_user.ticket.descr);
+        tickName.setText(gbC.curr_user.selectedTicket.nome);
+        depField.setText(gbC.curr_user.selectedTicket.depart);
+        descrField.setText(gbC.curr_user.selectedTicket.descr);
         user.setText(gbC.curr_user.getUsername());
         start.setOpacity(1);
         start.setDisable(false);
@@ -36,17 +36,17 @@ public class TicketPageController {
         finish.setDisable(false);
         stop.setOpacity(1);
         stop.setDisable(false);
-        if(gbC.curr_user.ticket.getStatus().equals("start")){
+        if(gbC.curr_user.selectedTicket.getStatus().equals("start")){
             finish.setOpacity(0.3);
             finish.setDisable(true);
             stop.setOpacity(0.3);
             stop.setDisable(true);
         }
-        else if (gbC.curr_user.ticket.getStatus().equals("progress")) {
+        else if (gbC.curr_user.selectedTicket.getStatus().equals("progress")) {
             start.setOpacity(0.3);
             start.setDisable(true);
         }
-        else if (gbC.curr_user.ticket.getStatus().equals("stop")) {
+        else if (gbC.curr_user.selectedTicket.getStatus().equals("stop")) {
             stop.setOpacity(0.3);
             stop.setDisable(true);
             finish.setOpacity(0.3);
@@ -66,6 +66,8 @@ public class TicketPageController {
         logOutButton.fire();
     }
     @FXML
+    protected void fireAccountPage(){ accountButton.fire(); }
+    @FXML
     protected void onLogOut(ActionEvent event) throws IOException {
          LogInPageController loginC=(LogInPageController) gbC.changeScene("Log_in.fxml", event);
     }
@@ -74,28 +76,34 @@ public class TicketPageController {
         statement = connection.prepareStatement("UPDATE ticket\n" +
                 "SET status = 'progress'\n" +
                 "WHERE idTicket= ?;");
-        statement.setInt(1, gbC.curr_user.ticket.getIdTicket());
+        statement.setInt(1, gbC.curr_user.selectedTicket.getIdTicket());
         statement.executeUpdate();
-        gbC.curr_user.ticket.setStatus("progress");
+        gbC.curr_user.selectedTicket.setStatus("progress");
+        gbC.curr_user.lastStartedTicket = gbC.curr_user.selectedTicket;
         openTab();
     }
     public void onStopPressed()  throws SQLException {
         statement = connection.prepareStatement("UPDATE ticket\n" +
                 "SET status = 'stop'\n" +
                 "WHERE idTicket= ?;");
-        statement.setInt(1, gbC.curr_user.ticket.getIdTicket());
+        statement.setInt(1, gbC.curr_user.selectedTicket.getIdTicket());
         statement.executeUpdate();
-        gbC.curr_user.ticket.setStatus("stop");
+        gbC.curr_user.selectedTicket.setStatus("stop");
         openTab();
     }
-    public void onFinishPressed()  throws SQLException {
+    public void onFinishPressed(ActionEvent event) throws SQLException, IOException {
         statement = connection.prepareStatement("UPDATE ticket\n" +
                 "SET status = 'finish'\n" +
                 "WHERE idTicket= ?;");
-        statement.setInt(1, gbC.curr_user.ticket.getIdTicket());
+        statement.setInt(1, gbC.curr_user.selectedTicket.getIdTicket());
         statement.executeUpdate();
-        gbC.curr_user.ticket.setStatus("finish");
+        gbC.curr_user.selectedTicket.setStatus("finish");
+        gbC.curr_user.lastResolvedTicket = gbC.curr_user.selectedTicket;
+        gbC.curr_user.resolvedTicket();
+        statement = connection.prepareStatement("UPDATE dipendente SET nTicketRis = nTicketRis + 1 WHERE User = '"+gbC.curr_user.getUsername()+"'");
+        statement.execute();
         openTab();
+        onReturnPressed(event);
     }
 
     public static void DB_connection() {
@@ -119,5 +127,11 @@ public class TicketPageController {
         catch(Exception e){
             //controllo errori nella connessione per il driver "jdbc" utilizzato dalla libreria "MySQL"
         }
+    }
+
+    public void onAccountPressed(ActionEvent event) throws IOException, SQLException {
+        AccountPageController accountC = (AccountPageController) gbC.changeScene("Account.fxml", event);
+        accountC.gbC = this.gbC;
+        accountC.openTab();
     }
 }
