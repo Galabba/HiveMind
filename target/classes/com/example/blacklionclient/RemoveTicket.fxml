@@ -20,7 +20,7 @@
          <children>
             <MenuButton layoutX="1095.0" layoutY="52.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="101.0" text="Settings">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Account" />
+                  <MenuItem mnemonicParsing="false" onAction="#fireAccountPage" text="Account" />
                   <MenuItem mnemonicParsing="false" onAction="#fireLogOut" text="Log Out" />
                </items>
             </MenuButton>
@@ -37,6 +37,7 @@
          </children>
       </Pane>
       <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOut" text="Button" visible="false" />
+      <Button fx:id="accountButton" mnemonicParsing="false" onAction="#onAccountPressed" text="Button" visible="false" />
       <Button layoutX="615.0" layoutY="849.0" mnemonicParsing="false" onAction="#onReturnPressed" text="&lt;---" />
       <GridPane fx:id="table" gridLinesVisible="true" layoutX="286.0" layoutY="197.0" prefHeight="513.0" prefWidth="725.0" style="@../../../css/gridpane.css" stylesheets="@../../../css/hive_mind.css">
          <columnConstraints>
