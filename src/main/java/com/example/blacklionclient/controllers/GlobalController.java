@@ -28,7 +28,7 @@ public class GlobalController {
     public Object changeScene(String url, ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/blacklionclient/"+url));
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Scene scene = new Scene(loader.load(), 1280, 960);
+        Scene scene = new Scene(loader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
         return loader.getController();

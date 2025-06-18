@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -20,6 +21,8 @@ public class AccountPageController {
     @FXML
     Pane managerPage, userPage;
     @FXML
+    Text user1;
+    @FXML
     TextField usernameM, usernameD, nameM, nameD, surnameM, surnameD, departmentM, departmentD, cityD, nTickResD, nTickResDepart;
 
     public GlobalController gbC;
@@ -28,6 +31,7 @@ public class AccountPageController {
 
     public void openTab() throws SQLException {
         if(gbC.curr_user!=null){
+            user1.setText(gbC.curr_user.getUsername());
             managerPage.setVisible(false);
             userPage.setVisible(true);
             usernameD.setText(gbC.curr_user.getUsername());
@@ -54,6 +58,7 @@ public class AccountPageController {
             }
         }
         else if(gbC.curr_admin!=null){
+            user1.setText(gbC.curr_admin.getUsername());
             managerPage.setVisible(true);
             userPage.setVisible(false);
             usernameM.setText(gbC.curr_admin.getUsername());

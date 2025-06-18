@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.controllers.CreateTicketPageController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" stylesheets="@../../../css/hive_mind.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.blacklionclient.controllers.CreateTicketPageController">
    <children>
       <Text layoutX="468.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create Ticket" textAlignment="CENTER" wrappingWidth="354.13671875">
          <font>
@@ -36,25 +36,25 @@
       </MenuButton>
       <Button fx:id="logOutButton" mnemonicParsing="false" onAction="#onLogOut" text="Button" visible="false" />
       <Button fx:id="accountButton" mnemonicParsing="false" onAction="#onAccountPressed" text="Button" visible="false" />
-      <TextArea fx:id="descrField" layoutX="185.0" layoutY="284.0" prefHeight="266.0" prefWidth="373.0" promptText="Ticket Description" stylesheets="@../../../css/hive_mind.css" wrapText="true">
+      <TextArea fx:id="descrField" layoutX="194.0" layoutY="205.0" prefHeight="266.0" prefWidth="373.0" promptText="Ticket Description" stylesheets="@../../../css/hive_mind.css" wrapText="true">
          <font>
             <Font size="18.0" />
          </font>
       </TextArea>
-      <Button layoutX="617.0" layoutY="705.0" mnemonicParsing="false" onAction="#onReturnPressed" text="&lt;---" />
-      <TextField fx:id="departField" editable="false" layoutX="820.0" layoutY="289.0" snapToPixel="false" text="Il tuo Dipatimento" />
-      <Text layoutX="649.0" layoutY="312.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" wrappingWidth="152.3349609375">
+      <Button layoutX="615.0" layoutY="537.0" mnemonicParsing="false" onAction="#onReturnPressed" text="&lt;---" />
+      <TextField fx:id="departField" editable="false" layoutX="814.0" layoutY="235.0" snapToPixel="false" text="Il tuo Dipatimento" />
+      <Text layoutX="643.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Department:" wrappingWidth="152.3349609375">
          <font>
             <Font size="26.0" />
          </font>
       </Text>
-      <TextField fx:id="nameField" layoutX="820.0" layoutY="358.0" promptText="es: Implementazione Login" snapToPixel="false" />
-      <Text layoutX="649.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Name:" wrappingWidth="152.3349609375">
+      <TextField fx:id="nameField" layoutX="814.0" layoutY="304.0" promptText="es: Implementazione Login" snapToPixel="false" />
+      <Text layoutX="643.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Name:" wrappingWidth="152.3349609375">
          <font>
             <Font size="26.0" />
          </font>
       </Text>
-      <Button layoutX="758.0" layoutY="450.0" mnemonicParsing="false" onAction="#onCreatePressed" text="Create" />
+      <Button layoutX="752.0" layoutY="396.0" mnemonicParsing="false" onAction="#onCreatePressed" text="Create" />
       <Pane fx:id="descrAlert" layoutX="485.0" layoutY="234.0" prefHeight="135.0" prefWidth="330.0" style="-fx-background-color: white; -fx-border-color: black;" visible="false">
          <children>
             <Text layoutX="43.0" layoutY="33.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ticket Description its too long!" textAlignment="CENTER">
